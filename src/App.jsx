@@ -8,7 +8,7 @@ import Selection from './components/FormInputs/Selection'
 import Input from './components/FormInputs/Input'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState('')
   const [themeDark, setThemeDark] = useState('DARK')
   const [themeLight, setThemeLight] = useState('LIGHT')
 
@@ -22,8 +22,16 @@ function App() {
     themeDark && themeLight === undefined ? 'Loading' :
       <div>
         <div>
+
+          <div className='border border-neutral-700 rounded-lg mb-2'>
+            <div className='flex gap-2 p-4'>
+              <input type='checkbox' />
+            Glassmorphism
+            <label>{count}</label>
+            </div>
+          </div>
         
-          <div className='flex-col gap-2 p-4 bg-black rounded-lg border border-neutral-800'>
+          <div className='flex-col gap-2 p-4 bg-black/70 rounded-lg border border-neutral-800'>
             <div className='flex gap-2'>
               <Btn name={'Home'} icon={'HOME'} theme={themeDark} />
               <Btn name={'Settings'} theme={themeDark} />
@@ -31,8 +39,16 @@ function App() {
               <Selection theme={themeDark} items={itemSelect} />
             </div>
             <div className='flex gap-2 pt-4'>
-              <Btn icon={'GEAR'} theme={themeDark} />
-              <Input name={'Username'} icon={'USER'} type={'text'} theme={themeDark} maxlength={'16'} minlength={'6'} />
+              <Input name={'Username'} icon={'USER'} type={'text'} theme={themeDark} maxlength={'12'} minlength={'6'} evtSetValue={setCount} />
+              <Input name={'Lastname'} type={'text'} theme={themeDark} maxlength={'16'} minlength={'6'} />
+            </div>
+            <div className='flex gap-2 pt-4'>
+              <Input id={'Usernamelabel'} name={'Username'} icon={'USER'} type={'text'} theme={themeDark} maxlength={'12'} minlength={'6'} label={'Name'} placeholder={'José Pedro'} />
+              <Input id={'Lastnamelabel'} name={'Lastname'} type={'text'} theme={themeDark} maxlength={'16'} minlength={'6'} label={'Lastname'} placeholder={'Fuenzalida'} />
+            </div>
+            <div className='flex gap-2 pt-4'>
+              <Input name={'Phone number'} icon={'PHONE'} type={'tel'} pattern={'PHONE'} theme={themeDark} maxlength={'11'} minlength={'11'} />
+              <Input name={'Phone number'} type={'tel'} theme={themeDark} />
             </div>
           </div>
 
@@ -44,8 +60,8 @@ function App() {
               <Selection theme={themeLight} items={itemSelect} />
             </div>
             <div className='flex gap-2 pt-4'>
-              <Btn icon={'GEAR'} theme={themeLight} />
               <Input name={'Username'} icon={'USER'} type={'text'} theme={themeLight} />
+              <Input name={'Lastname'} type={'text'} theme={themeLight} />
             </div>
           </div>
 
